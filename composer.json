@@ -1,5 +1,5 @@
 {
-    "name": "bileto/omnipay-payu",
+    "name": "sylapi/omnipay-payu-openpayu",
     "type": "library",
     "description": "PayU gateway for Omnipay payment processing library",
     "keywords": [
@@ -11,7 +11,7 @@
         "payu",
         "purchase"
     ],
-    "homepage": "https://github.com/bileto/omnipay-payu",
+    "homepage": "https://github.com/sylapi/omnipay-payu-openpayu",
     "license": "MIT",
     "authors": [
         {
@@ -25,9 +25,13 @@
         {
             "name": "Jan Machala",
             "email": "jan.machala@bileto.com"
+        },
+        {
+            "name": "Bartlomiej Gajda",
+            "email": "b.gajda@sylapi.com"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "autoload": {
         "psr-4": { "Omnipay\\PayU\\" : "src/" }
     },

@@ -3,6 +3,7 @@
 namespace Omnipay\PayU;
 
 use Omnipay\Common\AbstractGateway;
+use Omnipay\Common\Message\AbstractRequest;
 use Omnipay\Common\Message\ResponseInterface;
 use Omnipay\PayU\Messages\CompletePurchaseRequest;
 use Omnipay\PayU\Messages\CompletePurchaseResponse;
@@ -48,25 +49,19 @@ class Gateway extends AbstractGateway
     /**
      * @param array $options
      * @throws OpenPayU_Exception
-     * @return PurchaseResponse|ResponseInterface
      */
-    public function purchase(array $options = []): ResponseInterface
+    public function purchase(array $options = []): AbstractRequest
     {
-        $request = $this->createRequest(PurchaseRequest::class, $options);
-
-        return $request->send();
+        return $this->createRequest(PurchaseRequest::class, $options);
     }
 
     /**
      * @param array $options
      * @throws OpenPayU_Exception
-     * @return CompletePurchaseResponse|ResponseInterface
      */
-    public function completePurchase(array $options = []): ResponseInterface
+    public function completePurchase(array $options = []): AbstractRequest
     {
-        $request = $this->createRequest(CompletePurchaseRequest::class, $options);
-
-        return $request->send();
+        return $this->createRequest(CompletePurchaseRequest::class, $options);
     }
 
     public function acceptNotification(): Notification

@@ -1,6 +1,6 @@
 # Omnipay: PayU
 
-**PayU driver for the Omnipay PHP payment processing library**
+PayU driver for the Omnipay PHP payment processing library
 
 [Omnipay](https://github.com/thephpleague/omnipay) is a framework agnostic, multi-gateway payment
 processing library for PHP 5.3+. This package implements PayU Online Payment Gateway support for Omnipay.
@@ -14,27 +14,22 @@ This implementation uses OAuth 2
 Omnipay is installed via [Composer](http://getcomposer.org/). To install, simply add it
 to your `composer.json` file:
 
-```json
-{
-    "require": {
-        "bileto/omnipay-payu": "~0.1.1"
-    }
-}
+```sh
+composer require sylapi/omnipay-payu-openpayu
 ```
+
 ## TL;DR
+
 ```php
 <?php
 require 'vendor/autoload.php';
 
 use Omnipay\PayU\GatewayFactory;
 
-$dotenv = new Dotenv\Dotenv(__DIR__);
-$dotenv->load();
-
 // default is official sandbox
-$posId = isset($_ENV['POS_ID']) ? $_ENV['POS_ID'] : '300046';
-$secondKey = isset($_ENV['SECOND_KEY']) ? $_ENV['SECOND_KEY'] : '0c017495773278c50c7b35434017b2ca';
-$oAuthClientSecret = isset($_ENV['OAUTH_CLIENT_SECRET']) ? $_ENV['OAUTH_CLIENT_SECRET'] : 'c8d4b7ac61758704f38ed5564d8c0ae0';
+$posId = '300046';
+$secondKey = '0c017495773278c50c7b35434017b2ca';
+$oAuthClientSecret = 'c8d4b7ac61758704f38ed5564d8c0ae0';
 
 $gateway = GatewayFactory::createInstance($posId, $secondKey, $oAuthClientSecret, true);
 
@@ -85,11 +80,9 @@ try {
 }
 ```
 
-For custom sandbox payu gateway prepare `.env` file based on `.env-default`.
-
 ## Test cards
 
-### Positive authorization 
+### Positive authorization
 
 | Card provider | Card number
 |---|---
@@ -99,7 +92,7 @@ For custom sandbox payu gateway prepare `.env` file based on `.env-default`.
 |MAESTRO | 6999631853158960001
 |MASTER CARD| 5100052384536818
 
-### Negative authorization 
+### Negative authorization
 
 | Card provider | Card number
 |---|---
