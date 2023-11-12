@@ -78,8 +78,8 @@ class Notification implements NotificationInterface
      */
     public function getTransactionReference(): ?string
     {
-        if (isset($this->getData()->order->extOrderId) && !empty($this->getData()->order->extOrderId)) {
-            return (string) $this->getData()->order->extOrderId;
+        if (isset($this->getData()->order->orderId) && !empty($this->getData()->order->orderId)) {
+            return (string) $this->getData()->order->orderId;
         }
 
         return null;
@@ -137,9 +137,9 @@ class Notification implements NotificationInterface
             $status = $this->getData()->order->status;
             if (in_array($status, ['COMPLETED'], true)) {
                 return self::STATUS_COMPLETED;
-            } elseif (in_array($status, ['PENDING'])) {
+            } elseif (in_array($status, ['PENDING', 'WAITING_FOR_CONFIRMATION'])) {
                 return self::STATUS_PENDING;
-            } elseif (in_array($status, ['CANCELLED', 'REJECTED'])) {
+            } elseif (in_array($status, ['CANCELED','CANCELLED', 'REJECTED'])) {
                 return self::STATUS_FAILED;
             }
             throw new InvalidRequestException('We have received unknown status "' . $status . '"');
