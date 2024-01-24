@@ -40,7 +40,7 @@ class Gateway extends AbstractGateway
         OpenPayU_Configuration::setOauthGrantType('client_credentials');
         OpenPayU_Configuration::setMerchantPosId($this->getParameter('posId'));
         OpenPayU_Configuration::setSignatureKey($this->getParameter('secondKey'));
-        OpenPayU_Configuration::setOauthClientId($this->getParameter('posAuthKey'));
+        OpenPayU_Configuration::setOauthClientId($this->getParameter('posAuthKey') ?? '');
         OpenPayU_Configuration::setOauthClientSecret($this->getParameter('clientSecret'));
 
         return $this;
